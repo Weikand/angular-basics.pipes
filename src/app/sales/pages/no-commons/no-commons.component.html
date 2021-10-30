@@ -1,0 +1,77 @@
+<div class="text-layout">
+  <h1>Not very common pipes</h1>
+  <p>
+    Included pipes in Angular - Usually included in CommonModule.
+  </p>
+</div>
+
+<div class="grid">
+  <div class="col md:col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <p>
+        Hi {{gender | i18nSelect:invitationMap}} {{name}}, is a pleasure to invite you to our event.
+      </p>
+      <button pButton type="button" label="Change Person"
+              class="p-button-rounded p-button-warning" (click)="changeClient()"></button>
+    </p-fieldset>
+  </div>
+  <div class="col md:col-6">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      <p>
+        Actually, {{clients.length | i18nPlural:clientsMap}}
+      </p>
+      <button pButton type="button" label="Delete person"
+              class="p-button-rounded p-button-danger" (click)="deleteClient()"></button>
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+      <b>Original</b>
+      <pre>{{clients}}</pre>
+      <b>slice:0:2</b>
+      <pre>{{clients | slice:0:2}}</pre>
+      <b>slice:1:2</b>
+      <pre>{{clients | slice:1:2}}</pre>
+      <b>slice:1:3</b>
+      <pre>{{clients | slice:1:3}}</pre>
+      <b>slice:3:3</b>
+      <pre>{{clients | slice:3:3}}</pre>
+      <b>slice:0:4 (Gerard)</b>
+      <pre>{{name | slice:0:4}}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="JSON Pipe" [toggleable]="true">
+
+      <pre>{{heroes | json}}</pre>
+
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+      <ul>
+        <li *ngFor="let item of person | keyvalue">
+          <b>{{item.key | titlecase}}</b>: {{item.value}}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <pre *ngIf="!(myObservable | async)"> Resolving observable... </pre>
+      <pre> {{myObservable | async}} </pre>
+
+<!--      <pre *ngIf="!(myObservable | async); else elseTemplate">Resolving observable...</pre>-->
+<!--      <ng-template #elseTemplate>-->
+<!--        <pre> {{ myObservable | async }} </pre>-->
+<!--      </ng-template>-->
+
+      <pre *ngIf="!(promiseValue | async)"> Resolving promise... </pre>
+      <pre> {{promiseValue | async}} </pre>
+    </p-fieldset>
+  </div>
+</div>
